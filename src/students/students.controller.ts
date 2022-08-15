@@ -11,6 +11,11 @@ export class StudentsController{
         @Body('MobileNo') studMobile:number,
         ):any{
 
-              this.studentsService.insertStudent(studName,studAddress,studMobile);
+            const generatedId = this.studentsService.insertStudent(
+                studName,
+                studAddress,
+                studMobile,
+                );
+                return {id:generatedId};
        }
 }
