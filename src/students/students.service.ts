@@ -5,11 +5,12 @@ export class StudentsService{
     student:Students[]=[];
 
     insertStudent(Name:string, Address:string,MobileNo:number){
-        const newStudent= new Students(new Date().toString(),Name ,Address,MobileNo)
+        const studentID=new Date().toString();
+        const newStudent= new Students(Name ,Address,MobileNo)
     }
 
     this.student.push(newStudent);
 
-
+      return studentID;
 
 }
