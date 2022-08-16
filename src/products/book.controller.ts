@@ -1,26 +1,26 @@
 import { Controller, Post, Body, Get, Param, Patch, Delete } from "@nestjs/common";
 import { BooksService } from "./book.service";
 
-@Controller('products')
+@Controller('books')
 export class BooksController {
-    constructor(private productService: BooksService) { }
+    constructor(private bookService: BooksService) { }
 
     @Post()
     addProduct(
         @Body('title') prodTitle: string,
         @Body('author') prodAuthor: string,
-        @Body('price') prodPrice: number
+        @Body('price') prodPrice: number,
     ) {
-        const generatedId = this.productService.insertProduct(prodTitle, prodAuthor, prodPrice);
+        const generatedId = this.bookService.insertProduct(prodTitle, prodAuthor, prodPrice);
         return { id: generatedId };
     }
     @Get()
     getAllProducts() {
-        return this.productService.getProducts();
+        return this.bookService.getProducts();
     }
     @Get(':id')
     getProduct(@Param('id') prodId: string,) {
-        return this.productService.getSingleProduct(prodId);
+        return this.bookService.getSingleProduct(prodId);
     }
 
     @Patch(':id')
@@ -30,12 +30,12 @@ export class BooksController {
         @Body('author') prodAuthor: string,
         @Body('price') prodPrice: number
     ) {
-        this.productService.updateProduct(prodId, prodTitle, prodAuthor, prodPrice);
+        this.bookService.updateProduct(prodId, prodTitle, prodAuthor, prodPrice);
         return null;
     }
     @Delete(':id')
     removeProduct(@Param('id') prodId: string,) {
-        this.productService.deleteProduct(prodId);
+        this.bookService.deleteProduct(prodId);
         return null;
     }
 } 
