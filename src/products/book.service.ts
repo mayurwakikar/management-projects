@@ -1,11 +1,12 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 
-
 import { Product } from "./book.model";
 
 @Injectable()
 export class BooksService {
     private products: Product[] = [];
+    // constructor((BookEntity)
+    // private readonly bookRepository: Repository<BookEntity>) { }
 
     insertProduct(title: string, author: string, price: number) {
         const prodId = Math.random().toString();       //new Date().toString(); instead of this we used Math.random
